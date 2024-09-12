@@ -66,7 +66,7 @@ root/
     npm run start
     ```
 
-    The backend will run at `http://localhost:5000`.
+    The backend will run at `http://localhost:1111`.
 
 ### Frontend Setup
 
@@ -94,8 +94,8 @@ root/
 
 ## 🌐 Live Demo
 
-- **Frontend (Netlify)**: [MystryDigit Frontend](https://sample-netlify-link.com)
-- **Backend (Render)**: [MystryDigit Backend API](https://sample-render-link.com)
+- **Frontend (Netlify)**: [MystryDigit Frontend](https://mystrydigit.netlify.app/)
+- **Backend (Render)**: [MystryDigit Backend API](https://number-guessing-t6i7.onrender.com/)
 
 ---
 
