@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { API_URL } from '../../_helper';
+import confetti from 'canvas-confetti'; // Import confetti
+import { motion } from 'framer-motion';
 
 const NumberGuessingGame = () => {
   const [guess, setGuess] = useState('');
@@ -52,7 +54,8 @@ const NumberGuessingGame = () => {
     const userGuess = parseInt(guess);
 
     if (userGuess === randomNumber) {
-      setMessage('Congratulations! You guessed it right! A new number has been generated.');
+      setMessage('🎉Congratulations! You guessed it right! A new number has been generated.');
+      alert('🎉Congratulations! You guessed it right! A new number has been generated.')
       setScore((prevScore) => prevScore + 1);
       resetGameForNextRound();
       return;
@@ -70,9 +73,16 @@ const NumberGuessingGame = () => {
 
       if (score > userMaxScore) {
         try {
+          // Trigger confetti when the user achieves a new high score
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
+
           await axios.post(`${API_URL}/updateMaxScore`, {
             email: Cookies.get('gameremail'),
-            newMaxScore: score
+            newMaxScore: score,
           });
           alert('Congratulations! New high score!');
           window.location.reload();
@@ -112,7 +122,7 @@ const NumberGuessingGame = () => {
             />
             <button
               onClick={handleGuess}
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg hover:shadow-lg transition transform hover:scale-105"
             >
               Submit Guess
             </button>

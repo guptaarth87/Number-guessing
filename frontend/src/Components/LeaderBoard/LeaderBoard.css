@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.leaderboard-container {
+  animation: gradientBackground 10s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* .leaderboard-title {
+  background: linear-gradient(-45deg, #ff6b6b, #f06595, #845ef7, #339af0);
+  animation: gradientText 5s ease infinite;
+} */
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.table-auto th, .table-auto td {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+.table-auto tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-auto tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}

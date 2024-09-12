@@ -18,7 +18,7 @@ const Login = ({ onSwitch }) => {
   }, [navigate]);
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(`${API_URL}/login, data`);
+      const response = await axios.post(`${API_URL}/login`, data);
       Cookies.set('gameremail', data.email, { expires: 7 }); // Set cookie for 7 days
       alert(response.data.message);
       navigate('/index');
