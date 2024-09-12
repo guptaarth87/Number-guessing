@@ -1,12 +1,15 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { API_URL } from '../../_helper';
+import Loader from '../Loader/Loader';
+
 
 const Signup = ({ onSwitch }) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [isLoading ,setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,20 +22,25 @@ const Signup = ({ onSwitch }) => {
   }, [navigate]);
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     try {
       const response = await axios.post(`${API_URL}/signup`, data);
       Cookies.set('gameremail', data.email, { expires: 7 }); // Set cookie for 7 days
-      
+      setIsLoading(false);
       alert(response.data.message);
       navigate('/index');
     } catch (err) {
+      setIsLoading(false);
       alert(err.response.data.error || 'Something went wrong');
     }
   };
 
   return (
     <div className="flex items-center justify-center h-screen background-clr">
-      <div className="background-clr p-8 rounded shadow-md w-96 text-white">
+      {
+        isLoading?
+        <Loader/>:
+        <div className="background-clr p-8 rounded shadow-md w-96 text-white">
         <h2 className="text-white text-2xl mb-6 text-center">Sign Up</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
@@ -83,6 +91,8 @@ const Signup = ({ onSwitch }) => {
           </button>
         </p>
       </div>
+      }
+      
     </div>
   );
 };
