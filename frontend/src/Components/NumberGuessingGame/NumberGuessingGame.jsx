@@ -107,7 +107,10 @@ const NumberGuessingGame = () => {
 
   return (
     <div className="bg-white p-8 rounded-lg max-w-lg mx-auto shadow-lg">
-      <h1 className="text-2xl font-bold text-center mb-6">Number Guessing Game</h1>
+      <h1 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 my-8">
+  MystryDigit<span className="ml-2">❓</span>
+</h1>
+
 
       {!gameOver && (
         <>
