@@ -10,56 +10,103 @@
   <div class="container mt-5">
     <h1>API Documentation</h1>
 
+    <!-- Authentication -->
     <h2>Authentication</h2>
-    <p><strong>POST /auth/signup</strong>: Create a new user.</p>
+    <p><strong>POST /signup</strong>: Create a new user.</p>
     <p><strong>Request Body:</strong></p>
-    <pre>
-      <code>
-        {
-          "name": "string",
-          "password": "string",
-          "email": "string"
-        }
-      </code>
-    </pre>
+    <pre><code>
+{
+  "name": "string",
+  "password": "string",
+  "email": "string"
+}
+    </code></pre>
     <p><strong>Sample Request:</strong></p>
-    <pre>
-      <code>
-        POST /auth/signup
-        Content-Type: application/json
+    <pre><code>
+POST /signup
+Content-Type: application/json
 
-        {
-          "name": "John Doe",
-          "password": "password123",
-          "email": "john@example.com"
-        }
-      </code>
-    </pre>
+{
+  "name": "John Doe",
+  "password": "password123",
+  "email": "john@example.com"
+}
+    </code></pre>
 
-    <p><strong>POST /auth/login</strong>: Authenticate user.</p>
+    <p><strong>POST /login</strong>: Authenticate user.</p>
     <p><strong>Request Body:</strong></p>
-    <pre>
-      <code>
-        {
-          "email": "string",
-          "password": "string"
-        }
-      </code>
-    </pre>
+    <pre><code>
+{
+  "email": "string",
+  "password": "string"
+}
+    </code></pre>
     <p><strong>Sample Request:</strong></p>
-    <pre>
-      <code>
-        POST /auth/login
-        Content-Type: application/json
+    <pre><code>
+POST /login
+Content-Type: application/json
 
-        {
-          "email": "email12@gmail.com",
-          "password": "password123"
-        }
-      </code>
-    </pre>
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+    </code></pre>
 
+    <!-- Fetch User Information -->
+    <h2>User Information</h2>
     
+    <p><strong>GET /user/:email</strong>: Get user details by email.</p>
+    <p><strong>Request Parameters:</strong></p>
+    <pre><code>
+{
+  "email": "user@example.com"
+}
+    </code></pre>
+    <p><strong>Sample Request:</strong></p>
+    <pre><code>
+GET /user/john@example.com
+    </code></pre>
+
+    <!-- Leaderboard -->
+    <h2>Leaderboard</h2>
+    
+    <p><strong>GET /top10Users</strong>: Get the top 10 users with the highest max scores.</p>
+    <p><strong>Sample Request:</strong></p>
+    <pre><code>
+GET /top10Users
+    </code></pre>
+
+    <!-- Score Update -->
+    <h2>Score Update</h2>
+    
+    <p><strong>POST /updateMaxScore</strong>: Update the user's max score.</p>
+    <p><strong>Request Body:</strong></p>
+    <pre><code>
+{
+  "email": "string",
+  "newMaxScore": number
+}
+    </code></pre>
+    <p><strong>Sample Request:</strong></p>
+    <pre><code>
+POST /updateMaxScore
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "newMaxScore": 100
+}
+    </code></pre>
+
+    <!-- Index -->
+    <h2>Index</h2>
+    
+    <p><strong>GET /</strong>: Basic index route for testing the API status.</p>
+    <p><strong>Sample Request:</strong></p>
+    <pre><code>
+GET /
+    </code></pre>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
